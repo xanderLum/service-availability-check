@@ -29,3 +29,5 @@ Create a Jenkins declarative pipeline groovy script with the ff. stages
                 serviceB    |    9:00        |    9:04      |      UP
                 serviceB    |    9:05        |    9:06      |      DOWN
                 serviceB    |    9:07        |    9:30      |      UP
+
+changes made by Su!
