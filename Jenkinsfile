@@ -22,7 +22,7 @@ pipeline {
          stage('Hello') {
             steps {
                 script {
-                    check.timer();
+                    check.timer()
                 }
             }
         }
