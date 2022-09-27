@@ -19,7 +19,7 @@ pipeline {
                 }
             }
         }
-         stage('Hello') {
+         stage('timeout') {
             steps {
                 script {
                     check.timer()
