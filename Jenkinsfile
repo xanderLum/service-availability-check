@@ -11,18 +11,19 @@ pipeline {
         stage('check parameter') {
             steps {
                 script {
-                    check = load 'serviceCheck.groovy'
+                    check = load "serviceCheck.groovy"
                     if (params.ENDPOINT.isEmpty()) { 
                     currentBuild.result = 'ABORTED'
                     error("ENDPOINT LIST SHOULD NOT BE EMPTY!!")
                     } 
-                check.timer();
                 }
             }
         }
          stage('Hello') {
             steps {
-                echo 'Hello World'
+                script {
+                    check.timer();
+                }
             }
         }
     }
