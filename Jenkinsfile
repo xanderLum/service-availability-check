@@ -1,3 +1,4 @@
+def check
 pipeline {
     agent any
 
@@ -10,10 +11,12 @@ pipeline {
         stage('check parameter') {
             steps {
                 script {
+                    check = load 'serviceCheck.groovy'
                     if (params.ENDPOINT.isEmpty()) { 
                     currentBuild.result = 'ABORTED'
                     error("ENDPOINT LIST SHOULD NOT BE EMPTY!!")
-} 
+                    } 
+                check.timer();
                 }
             }
         }
