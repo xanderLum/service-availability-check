@@ -4,7 +4,7 @@ def timer(){
 //         environment {
 //             timeout_mins = "${params.TIMER}"
 //                  } 
-//             timeout(time: env.timeout_mins.toInteger(), unit: 'MINUTES')       
+            timeout(time: 4, unit: 'MINUTES')       
             echo 'success'
     }    
 }
