@@ -3,7 +3,7 @@ def timer(){
     { 
         echo 'onestep success'
         environment {
-            TIMEOUT_MINS = "${params.TIMER}"
+            TIMEOUT_MINS = ${params.TIMER}
                  } 
         echo '${TIMEOUT_MINS}'
         echo 'twostep success'
