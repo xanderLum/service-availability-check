@@ -6,9 +6,9 @@ def timer(){
 //             TIMEOUT_MINS = 19
 //                  } 
             timeout(time: ${TIME_OUT}, unit: 'MINUTES')    
-      {
+//       {
            echo "timeout minute : ${TIME_OUT} "
-        }
+//         }
     }    
 }
 
