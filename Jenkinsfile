@@ -21,9 +21,7 @@ pipeline {
         }
          stage('timeout') {
             steps {
-                script {
-                    check.timer()
-                }
+               echo 'success'
             }
         }
     }
