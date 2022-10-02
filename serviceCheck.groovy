@@ -7,7 +7,7 @@ def timer(){
                  } 
         echo "The job will stop at ${params.TIMER}"
         echo 'twostep success'
-            timeout(time: ${params.TIMER}.toInteger(), unit: 'MINUTES')     
+            timeout(time: ${TIMEOUT_MINS}.toInteger(), unit: 'MINUTES')     
     }    
 }
 
