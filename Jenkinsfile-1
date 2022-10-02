@@ -13,7 +13,7 @@ pipeline {
      stage ('test') {
       when {
         expression {
-          BRANCH_NAME == 'dev'
+          NEW_VERSION == '1.2.1'
         }
       }
       steps {
