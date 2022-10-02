@@ -7,10 +7,11 @@ def timer(){
 //                  } 
         echo "The job will stop at ${params.TIMER}"
         echo 'twostep success'
-//             timeout(time: env.timeout_mins.toInteger(), unit: 'MINUTES')     
-//         {
-//             echo 'success'
-//         }
+            timeout(time: ${params.TIMER}.toInteger(), unit: 'MINUTES')     
+        {
+            echo 'success'
+        
+        }
     }    
 }
 
