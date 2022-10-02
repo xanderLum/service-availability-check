@@ -11,6 +11,7 @@ pipeline {
       steps {
         echo 'building the job...'
         echo "building version ${NEW_VERSION}"
+        echo "Debug Build : ${params.DEBUG_BUILD}"
       }
     }
      stage ('test') {
