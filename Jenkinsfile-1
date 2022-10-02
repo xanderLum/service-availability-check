@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  parameters {
+  booleanParam description: 'is this a debug build?', name: 'DEBUG_BUILD'
+}
   environment {
     NEW_VERSION='1.3.0'
   }
