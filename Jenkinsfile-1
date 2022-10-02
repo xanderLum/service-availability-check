@@ -1,7 +1,10 @@
 pipeline {
   agent any
-  parameters {
-  booleanParam description: 'is this a debug build?', name: 'DEBUG_BUILD'
+triggers {
+  cron '* * * * *'
+}
+options {
+  timeout(time:3, unit:'MINUTES')
 }
   environment {
     NEW_VERSION='1.3.0'
@@ -11,7 +14,7 @@ pipeline {
       steps {
         echo 'building the job...'
         echo "building version ${NEW_VERSION}"
-        echo "Debug Build : ${params.DEBUG_BUILD}"
+        echo "The job will stop after ${params.TIMER} second."
       }
     }
      stage ('test') {
@@ -22,11 +25,6 @@ pipeline {
       }
       steps {
         echo 'testing the job...'
-      }
-    }
-     stage ('deploy') {
-      steps {
-        echo 'deplying the job...'
       }
     }
   }
