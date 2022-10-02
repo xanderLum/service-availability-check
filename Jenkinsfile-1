@@ -1,0 +1,29 @@
+pipeline {
+  agent any
+  environment {
+    NEW_VERSION='1.3.0'
+  }
+  stages {
+    stage ('build') {
+      steps {
+        echo 'building the job...'
+        echo "building version ${NEW_VERSION}"
+      }
+    }
+     stage ('test') {
+      when {
+        expression {
+          BRANCH_NAME == 'dev'
+        }
+      }
+      steps {
+        echo 'testing the job...'
+      }
+    }
+     stage ('deploy') {
+      steps {
+        echo 'deplying the job...'
+      }
+    }
+  }
+}
