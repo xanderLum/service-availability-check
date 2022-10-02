@@ -1,7 +1,7 @@
 def timer(){
     if (!params.TIMER.isEmpty()) 
     { 
-        def TIME_OUT = params.TEST_DURATION.toInteger()
+        def TIME_OUT = params.TIMER.toInteger()
 //         environment {
 //             TIMEOUT_MINS = 19
 //                  } 
