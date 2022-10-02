@@ -4,7 +4,7 @@ triggers {
   cron '* * * * *'
 }
 options {
-  timeout(time:3, unit:'MINUTES')
+  timeout(time:3, unit:'HOURS')
 }
   environment {
     NEW_VERSION='1.3.0'
