@@ -1,14 +1,13 @@
 def timer(){
     if (!params.TIMER.isEmpty()) 
     { 
-        echo 'onestep success'
         environment {
-            TIMEOUT_MINS = ${params.TIMER}.toInteger()
+            TIMEOUT_MINS = 19
                  } 
-        echo "The job will stop at ${params.TIMER}"
-         echo "The job will stop at ${TIMEOUT_MINS}"
-        echo 'twostep success'
-            timeout(time: ${TIMEOUT_MINS}, unit: 'MINUTES')     
+            timeout(time: env.TIMEOUT_MINS.toInteger(), unit: 'MINUTES')    
+        {
+            echo "timeout minute : ${env.TIMEOUT_MINS} "
+        }
     }    
 }
 
