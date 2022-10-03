@@ -9,17 +9,26 @@ pipeline {
         string description: 'List of target endpoints to monitor status', name: 'ENDPOINT', trim: true
     }
     stages {
-        stage('check parameter') {
+        stage(“init”) {
             steps {
                 script {
-                    check = load "serviceCheck.groovy"
-                    if (params.ENDPOINT.isEmpty()) { 
-                    currentBuild.result = 'ABORTED'
-                    error("ENDPOINT LIST SHOULD NOT BE EMPTY!!")
-                    } 
+                    check = load "availabilitycheck.groovy"
                 }
             }
         }
+         stage("split the parameter"){
+        steps {
+        script{
+        if (params.ENDPOINT.isEmpty()) { 
+                    currentBuild.result = 'ABORTED'
+                    error("ENDPOINT LIST SHOULD NOT BE EMPTY!!")
+                    } 
+          else {
+           check.split()
+            }
+            }
+            }
+        } 
          stage('timeout') {
             options {
         timeout(time: TIME_OUT, unit: 'SECONDS') 
@@ -28,5 +37,34 @@ pipeline {
                  echo 'success'
              }
         }
+        stage(“checkendpoints”) {
+            parallel {
+                stage ("youtube") {
+                       steps {
+                        script {
+                check.endpoint1("https://www.youtube.com/")
+                        }
+                       }
+                }
+                stage ("facebook") {
+                       steps {
+                        script {
+                            check.endpoint1("https://www.facebook.com/")
+                        }
+                       }
+                }
+                stage ("google") {
+                       steps {
+                        script {
+                            check.endpoint1("https://www.google.com/")
+                        }
+                       }
+                }
+                
+            }
+        }
+    }
+}
+
     }
 }
