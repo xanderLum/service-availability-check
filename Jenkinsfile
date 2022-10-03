@@ -24,6 +24,9 @@ pipeline {
             options {
         timeout(time: TIME_OUT, unit: 'SECONDS') 
     } 
+             steps {
+                 echo 'success'
+             }
         }
     }
 }
