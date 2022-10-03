@@ -12,7 +12,7 @@ pipeline {
         stage(“init”) {
             steps {
                 script {
-                    check = load "availabilitycheck.groovy"
+                    check = load "serviceCheck.groovy"
                 }
             }
         }
