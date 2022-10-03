@@ -1,4 +1,5 @@
 def check
+def TIME_OUT = params.TIMER.toInteger()
 pipeline {
     agent any
 
@@ -20,12 +21,9 @@ pipeline {
             }
         }
          stage('timeout') {
-            steps {
-               echo 'success'
-                script {
-                check.timer()
-                }
-            }
+            options {
+        timeout(time: TIME_OUT, unit: 'SECONDS') 
+    } 
         }
     }
 }
