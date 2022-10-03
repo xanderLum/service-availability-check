@@ -2,7 +2,6 @@ def check
 def TIME_OUT = params.TIMER.toInteger()
 pipeline {
     agent any
-
     parameters {
         string description: 'Timer to stop the job', name: 'TIMER', trim: true
         string defaultValue: '5', description: 'Time interval to check target endpoint\'s availability', name: 'TIME_INTERVAL', trim: true
@@ -16,23 +15,23 @@ pipeline {
                 }
             }
         }
-         stage("split the parameter"){
-        steps {
-        script{
-        if (params.ENDPOINT.isEmpty()) { 
-                    currentBuild.result = 'ABORTED'
+        stage(“parameter”) {
+            steps {
+                script{
+            if (params.ENDPOINT.isEmpty()) { 
+                currentBuild.result = 'ABORTED'
                     error("ENDPOINT LIST SHOULD NOT BE EMPTY!!")
-                    } 
-          else {
-           check.split()
-            }
-            }
+                  } 
+            else {
+                check.split()
+                }
+                }
             }
         } 
-         stage('timeout') {
+         stage(“Timeout”) {
             options {
-        timeout(time: TIME_OUT, unit: 'SECONDS') 
-    } 
+                timeout(time: TIME_OUT, unit: 'SECONDS') 
+            } 
              steps {
                  echo 'success'
              }
@@ -61,11 +60,7 @@ pipeline {
                         }
                        }
                 }
-                
             }
         }
-    }
-}
-
     }
 }
