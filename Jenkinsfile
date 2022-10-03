@@ -37,6 +37,7 @@ pipeline {
                  echo 'success'
              }
         }
+        
         stage(“checkendpoints”) {
             parallel {
                 stage ("youtube") {
