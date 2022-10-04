@@ -30,7 +30,7 @@ pipeline {
         } 
          stage(“Timeout”) {
             options {
-                timeout(time: TIME_OUT, unit: 'SECONDS') 
+                timeout(time: TIME_OUT, unit: 'MINUTES') 
             } 
              steps {
                  echo 'success'
