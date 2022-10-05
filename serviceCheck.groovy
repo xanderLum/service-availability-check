@@ -1,7 +1,15 @@
 def split () {
   String list = "${params.ENDPOINT}";
             String[] parts = list.split(","); 
+  
+  return parts;
 }
+
+
+def invokeEndpoint(endpoints){
+  //invoke the functions eg. curl
+}
+
 
 // def timer(){
 //     if (!params.TIMER.isEmpty()) 
