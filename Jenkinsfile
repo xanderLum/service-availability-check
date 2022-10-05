@@ -43,45 +43,52 @@ pipeline {
         
         stage(“checkendpoints”) {
             parallel {
-                stage ("youtube") {
-                       steps {
-                        script {
-                int status = sh(script: "curl -sLI -w '%{http_code}' $params.ENDPOINT1 -o /dev/null", returnStdout: true)
-                             if (status != 200 && status != 201) {
-                                error("Returned status code = $status when calling $url")
-                             }
-                            else {
-                                echo "OK"
-                            }
-                        }
-                       }
-                }
-                stage ("facebook") {
-                       steps {
-                        script {
-                            int status = sh(script: "curl -sLI -w '%{http_code}' $params.ENDPOINT2 -o /dev/null", returnStdout: true)
-                             if (status != 200 && status != 201) {
-                                error("Returned status code = $status when calling $url")
-                             }
-                            else {
-                                echo "OK"
-                            }
-                        }
-                       }
-                }
-                stage ("google") {
-                       steps {
-                        script {
-                             int status = sh(script: "curl -sLI -w '%{http_code}' $params.ENDPOINT3 -o /dev/null", returnStdout: true)
-                             if (status != 200 && status != 201) {
-                                error("Returned status code = $status when calling $url")
-                             }
-                            else {
-                                echo "OK"
-                            }
-                        }
-                       }
-                }
+                //loop counter here 
+                //when the totaltime covered < timer do loop
+                    //invoke another .groovy file 
+                    //inside that .groovy file is a function
+                    //function accepts the parameter of the endpoint
+                    //CheckEndpoints.groovy:
+                    //  invokeEndpoint(endpoint)
+//                 stage ("youtube") {
+//                        steps {
+//                         script {
+//                 int status = sh(script: "curl -sLI -w '%{http_code}' $params.ENDPOINT1 -o /dev/null", returnStdout: true)
+//                              if (status != 200 && status != 201) {
+//                                 error("Returned status code = $status when calling $url")
+//                              }
+//                             else {
+//                                 echo "OK"
+//                             }
+//                         }
+//                        }
+//                 }
+//                 stage ("facebook") {
+//                        steps {
+//                         script {
+//                             int status = sh(script: "curl -sLI -w '%{http_code}' $params.ENDPOINT2 -o /dev/null", returnStdout: true)
+//                              if (status != 200 && status != 201) {
+//                                 error("Returned status code = $status when calling $url")
+//                              }
+//                             else {
+//                                 echo "OK"
+//                             }
+//                         }
+//                        }
+//                 }
+//                 stage ("google") {
+//                        steps {
+//                         script {
+//                              int status = sh(script: "curl -sLI -w '%{http_code}' $params.ENDPOINT3 -o /dev/null", returnStdout: true)
+//                              if (status != 200 && status != 201) {
+//                                 error("Returned status code = $status when calling $url")
+//                              }
+//                             else {
+//                                 echo "OK"
+//                             }
+//                         }
+//                        }
+//                 }
             }
         }
     }
