@@ -37,6 +37,7 @@ pipeline {
              steps {
                  echo 'success'
                  sleep(time: 5, unit: "SECONDS")
+                 echo BUILD_ID
              }
         }
         
