@@ -20,7 +20,7 @@ pipeline {
         stage(“parameter”) {
             steps {
                 script{
-            if (params.ENDPOINT.isEmpty()) { 
+            if (params.ENDPOINT1.isEmpty()) { 
                 currentBuild.result = 'ABORTED'
                     error("ENDPOINT LIST SHOULD NOT BE EMPTY!!")
                   } 
