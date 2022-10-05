@@ -1,5 +1,6 @@
 def check
 def TIME_OUT = params.TIMER.toInteger()
+String[] parts
 pipeline {
     agent any
     parameters {
@@ -25,7 +26,8 @@ pipeline {
                     error("ENDPOINT LIST SHOULD NOT BE EMPTY!!")
                   } 
             else {
-                check.split()
+                 parts = check.split()
+                
                 }
                 }
             }
@@ -42,14 +44,27 @@ pipeline {
         }
         
         stage(“checkendpoints”) {
+            //loop counter here 
+            //when the totaltime covered < timer do loop
             parallel {
-                //loop counter here 
-                //when the totaltime covered < timer do loop
+                stage("Invoke endpoint"){
                     //invoke another .groovy file 
                     //inside that .groovy file is a function
                     //function accepts the parameter of the endpoint
                     //CheckEndpoints.groovy:
                     //  invokeEndpoint(endpoint)
+                     check.invokeEndpoint(parts);
+                    //get info for reporting function
+                    //save it to file
+                }
+            }
+            
+            stage("Generate report"){
+                //generate report file
+                //save to git repository
+            }
+            
+                
 //                 stage ("youtube") {
 //                        steps {
 //                         script {
