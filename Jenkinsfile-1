@@ -1,25 +1,37 @@
+def gv
+def TIME_OUT = params.TIMER.toInteger()
 pipeline {
   agent any
-  environment {
-    NEW_VERSION='1.3.0'
+  parameters {
+    string description: 'Timer to stop the job', name: 'TIMER', trim: true
+    string defaultValue: '5', description: 'Time interval to check target endpoint\'s availability', name: 'TIME_INTERVAL', trim: true
+    string description: 'List of target endpoints to monitor status', name: 'ENDPOINT', trim: true
   }
   stages {
-    stage ('build') {
+  
+    stage("init") {
+  options {
+     timeout(time: TIME_OUT, unit: 'MINUTES') 
+            }
       steps {
-        echo 'building the job...'
-        echo "building version ${NEW_VERSION}"
-        echo "The job will stop after ${params.TIMER} second."
+        script {
+          gv=load "splitparameter.groovy"
       }
-    }
-     stage ('test') {
-      when {
-        expression {
-          NEW_VERSION == '1.2.1'
-        }
+      echo "${TIME_INTERVAL}"
       }
-      steps {
-        echo 'testing the job...'
-      }
-    }
+     }
+     
+     stage("Split parameter"){
+     parallel {
+     stage ('check parallel') {
+     steps {
+      script {
+          gv.splitparams();
+          }
+          }
+     }
+     }
+     }
+     
   }
 }
