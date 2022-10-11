@@ -1,0 +1,51 @@
+def gv
+String[] parts
+String[] endpoints
+//def TIME_OUT = params.TIMER.toInteger()
+pipeline {
+  agent any
+  parameters {
+    string description: 'Timer to stop the job', name: 'TIMER', trim: true
+    string defaultValue: '5', description: 'Time interval to check target endpoint\'s availability', name: 'TIME_INTERVAL', trim: true
+    string description: 'List of target endpoints to monitor status', name: 'ENDPOINT', trim: true
+  }
+
+  stages {
+    stage("init") {
+      steps {
+        script {
+          gv=load "Jenkinsfile-2.groovy"
+          //add one validation about endpoints if null, then fail the job
+          if (ENDPOINT.isEmpty()) {
+          currentBuild.result = 'ABORTED'
+          error("ENDPOINT LIST SHOULD NOT BE EMPTY!!")
+          }
+        }
+      }
+   }
+      
+    stage("parallel checking"){
+        parallel {
+        
+        stage ('endpoint checking') {
+          steps {
+            script {
+               endpoints=gv.splitEndpoint () 
+              echo "${endpoints}"
+              gv.invokeEndpoint(endpoints)
+            }
+          }
+        }
+        
+        stage ('report') {
+          steps {
+            echo 'report file'
+          }
+        }
+   
+    }
+   }
+   
+
+  }
+}
