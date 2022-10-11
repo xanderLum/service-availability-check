@@ -22,6 +22,8 @@ def invokeEndpoint (endpoint) {
   }
      sleep time
   }
+  def data = "Hello World\nSecond line"
+  writeFile(file: '/runs/output.txt', text: data)
 }
 
 return this
