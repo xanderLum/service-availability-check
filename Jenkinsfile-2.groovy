@@ -20,8 +20,8 @@ def invokeEndpoint (endpoint) {
     result="FAIL"
   }
     echo "${result}"
-    sleep time
   }
+     sleep time
   }
 }
 
