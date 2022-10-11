@@ -5,6 +5,7 @@ def splitEndpoint () {
 }
 
 def invokeEndpoint (endpoint) {
+  String result
   while (currentBuild.duration<TIMER.toInteger()*1000) {
   int time=TIME_INTERVAL.toInteger()
   for (String values:endpoint) {
@@ -13,10 +14,10 @@ def invokeEndpoint (endpoint) {
    echo "Executed at - $date"
       int status = sh(script: "curl -sLI -w '%{http_code}' $values -o /dev/null", returnStdout: true)
   if (status == 200 ) {
-    String result="OK"
+    result="OK"
   }
   else {
-    String result="FAIL"
+    result="FAIL"
   }
     echo "${result}"
     sleep time
