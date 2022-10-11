@@ -13,10 +13,10 @@ def invokeEndpoint (endpoint) {
    echo "Executed at - $date"
       int status = sh(script: "curl -sLI -w '%{http_code}' $values -o /dev/null", returnStdout: true)
   if (status == 200 ) {
-    String result=='OK'
+    String result="OK"
   }
   else {
-    String result=='FAIL'
+    String result="FAIL"
   }
     echo "${result}"
     sleep time
