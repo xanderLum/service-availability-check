@@ -6,7 +6,7 @@ def splitEndpoint () {
 
 def invokeEndpoint (endpoint) {
   String result
-  while (currentBuild.duration<TIMER.toInteger()*1000) {
+  while (currentBuild.duration<TIMER.toInteger()*60000) {
    Date date = new Date(); 
    echo "Executed at - $date"
   int time=TIME_INTERVAL.toInteger()
