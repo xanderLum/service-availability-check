@@ -40,7 +40,7 @@ pipeline {
         stage ('report') {
           steps {
             echo 'report file'
-            gv.report ()
+            //gv.report ()
           }
         }
    
