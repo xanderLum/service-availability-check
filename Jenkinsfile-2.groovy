@@ -6,7 +6,7 @@ def splitEndpoint () {
 
 def invokeEndpoint (endpoint) {
   String result
-//  while (currentBuild.duration<TIMER.toInteger()*60000) {
+  while (currentBuild.duration<TIMER.toInteger()*60000) {
    Date date = new Date(); 
    echo "Executed at - $date"
   int time=TIME_INTERVAL.toInteger()
@@ -21,17 +21,17 @@ def invokeEndpoint (endpoint) {
     echo "${result}"
   }
      sleep time
- // }
+  }
  // def data = "First line\nSecond line"
  // writeFile(file: '/run/report.txt', text: data)
 }
 
-report () {
-  def data = "yahoo"
-  writeFile (file: 'report.txt',text:data)
-  sh "git add * "
-  sh "git commit -m "Added report file" "
-  sh "git push"
-}
+// report () {
+//   def data = "yahoo"
+//   writeFile (file: 'report.txt',text:data)
+//   sh "git add * "
+//   sh "git commit -m "Added report file" "
+//   sh "git push"
+// }
 
 return this
