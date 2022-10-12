@@ -35,14 +35,13 @@ def invokeEndpoint (endpoint) {
      sleep time
     return list;
   }
- // def data = "First line\nSecond line"
- // writeFile(file: '/run/report.txt', text: data)
+
 }
 
 def report(objectList){
   //print to file
  
-   File file = new File('E:/','report.txt').withWriter('utf-8') { 
+   File file = new File('run/','report.txt').withWriter('utf-8') { 
          writer -> writer.writeLine "\tendpoint\t|\tstart time|\t|end time|\tstatus"
       }  
   
@@ -54,12 +53,5 @@ def report(objectList){
     //commit/push to repo in /runs/ folder
 }
 
-// report () {
-//   def data = "yahoo"
-//   writeFile (file: 'report.txt',text:data)
-//   sh "git add * "
-//   sh "git commit -m "Added report file" "
-//   sh "git push"
-// }
 
 return this
