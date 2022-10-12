@@ -51,6 +51,9 @@ def report(objectList){
   }
   
     //commit/push to repo in /runs/ folder
+    sh "git add /run/report.txt"
+    sh "git commit -m "Add report file"
+    sh "git push"
 }
 
 
