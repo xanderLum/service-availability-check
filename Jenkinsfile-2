@@ -2,6 +2,7 @@ def gv
 String[] parts
 String[] endpoints
 //def TIME_OUT = params.TIMER.toInteger()
+ List<OjectName> list;
 pipeline {
   agent any
   parameters {
@@ -26,13 +27,13 @@ pipeline {
       
     stage("parallel checking"){
         parallel {
-        
+       
         stage ('endpoint checking') {
           steps {
             script {
                endpoints=gv.splitEndpoint () 
               echo "${endpoints}"
-              gv.invokeEndpoint(endpoints)
+             list = gv.invokeEndpoint(endpoints)
             }
           }
         }
@@ -40,7 +41,7 @@ pipeline {
         stage ('report') {
           steps {
             echo 'report file'
-            //gv.report ()
+            gv.report (list)
           }
         }
    
