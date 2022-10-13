@@ -1,4 +1,4 @@
-import objects.*;
+import objects.servicesDetails*;
 import java.io.File;
 
 def splitEndpoint () {
