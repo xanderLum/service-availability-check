@@ -1,8 +1,6 @@
 def gv
 String[] parts
 String[] endpoints
-//def TIME_OUT = params.TIMER.toInteger()
- List<OjectName> list;
 pipeline {
   agent any
   parameters {
