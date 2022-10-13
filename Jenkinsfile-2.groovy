@@ -1,4 +1,4 @@
-import objects.servicesDetails*;
+import objects.ServiceDetails.*;
 import java.io.File;
 
 def splitEndpoint () {
@@ -8,7 +8,7 @@ def splitEndpoint () {
 }
 
 def invokeEndpoint (endpoint) {
-  List<ObjectName> list = new ArrayList<>();
+  List<ServiceDetails> list = new ArrayList<>();
   String result
   while (currentBuild.duration<TIMER.toInteger()*60000) {  
    Date date = new Date(); 
@@ -16,7 +16,7 @@ def invokeEndpoint (endpoint) {
    echo "Executed at - $date"
   int time=TIME_INTERVAL.toInteger()
        for (String values:endpoint) {
-        ObjectName object = new ObjectName();
+        ServiceDetails object = new ServiceDetails();
         object.setStartTime(date);
         object.setEndpointName(values)
         object.setEndTime(date+time);
@@ -40,7 +40,6 @@ def invokeEndpoint (endpoint) {
 
 def report(objectList){
   //print to file
- 
    File file = new File('run/','report.txt').withWriter('utf-8') { 
          writer -> writer.writeLine "\tendpoint\t|\tstart time|\t|end time|\tstatus"
       }  
