@@ -1,4 +1,4 @@
-package objects.servicesDetails
+package objects
 
 class ServiceDetails {
     def endpoint
