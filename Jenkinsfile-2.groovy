@@ -47,12 +47,12 @@ def report(objectList){
   
   //loop the objectList
   for(def object: objectList){
-    file.write("\t"+object.getEndpoint()+"\t|\t"+object.getStartTime()+"\t|"+object.getEndTime()+"\t|"+object.getStatus()")
+    file.write("\t"+object.getEndpoint()+"\t|\t"+object.getStartTime()+"\t|"+object.getEndTime()+"\t|"+object.getStatus())
   }
   
     //commit/push to repo in /runs/ folder
     sh "git add /run/report.txt"
-    sh "git commit -m "Add report file"
+    sh "git commit -m "Add report file" "
     sh "git push"
 }
 
