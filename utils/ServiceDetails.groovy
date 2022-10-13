@@ -1,3 +1,5 @@
+package utils
+
 class ServiceDetails {
     def endpoint
     def startTime
