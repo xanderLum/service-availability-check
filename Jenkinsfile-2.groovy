@@ -1,4 +1,3 @@
-import objects.*
 import java.io.File;
 
 def splitEndpoint () {

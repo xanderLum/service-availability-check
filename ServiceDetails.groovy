@@ -1,5 +1,3 @@
-package objects
-
 class ServiceDetails {
     def endpoint
     def startTime
