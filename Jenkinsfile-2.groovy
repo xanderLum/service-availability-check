@@ -16,7 +16,7 @@ def invokeEndpoint (endpoint) {
    echo "Executed at - $date"
   int time=TIME_INTERVAL.toInteger()
        for (String values:endpoint) {
-        ServiceDetails object = new ServiceDetails();
+        def object = new ServiceDetails();
         object.setStartTime(date);
         object.setEndpointName(values)
         object.setEndTime(date+time);
