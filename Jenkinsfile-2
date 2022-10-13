@@ -13,7 +13,7 @@ pipeline {
     stage("init") {
       steps {
         script {
-          gv=load "Jenkinsfile-2.groovy"
+          gv=load "vars/Jenkinsfile-2.groovy"
           //add one validation about endpoints if null, then fail the job
           if (ENDPOINT.isEmpty()) {
           currentBuild.result = 'ABORTED'

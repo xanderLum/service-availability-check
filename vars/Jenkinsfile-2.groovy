@@ -1,3 +1,4 @@
+import ServiceDetails
 import java.io.File;
 
 def splitEndpoint () {
