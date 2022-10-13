@@ -1,5 +1,3 @@
-import utils.ServiceDetails
-
 import java.io.File
 
 def splitEndpoint () {
@@ -9,7 +7,7 @@ def splitEndpoint () {
 }
 
 def invokeEndpoint (endpoint) {
-  List<ServiceDetails> list = new ArrayList<>();
+  List<src.utils.ServiceDetails> list = new ArrayList<>();
   String result
   while (currentBuild.duration<TIMER.toInteger()*60000) {  
    Date date = new Date(); 
