@@ -1,4 +1,10 @@
+import src.utils.ServiceDetails
+
 import java.io.File
+
+def init(serviceDetails) {
+    ServiceDetails = serviceDetails
+}
 
 def splitEndpoint () {
   String list = "${params.ENDPOINT}";
@@ -7,7 +13,11 @@ def splitEndpoint () {
 }
 
 def invokeEndpoint (endpoint) {
-  List<src.utils.ServiceDetails> list = new ArrayList<>();
+   /* File sourceFile = new File("src/utils/ServiceDetails.groovy");
+    Class groovyClass = new GroovyClassLoader(getClass().getClassLoader()).parseClass(sourceFile);
+    GroovyObject myObject = (GroovyObject) groovyClass.newInstance();*/
+
+  List<ServiceDetails> list = new ArrayList<>();
   String result
   while (currentBuild.duration<TIMER.toInteger()*60000) {  
    Date date = new Date(); 
