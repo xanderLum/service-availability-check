@@ -1,9 +1,8 @@
-import ServiceDetails
-import java.io.File;
+import java.io.File
 
 def splitEndpoint () {
   String list = "${params.ENDPOINT}";
-    parts = list.split(","); 
+    parts = list.split(",");
     return parts;
 }
 
